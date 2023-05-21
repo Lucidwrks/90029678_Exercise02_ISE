@@ -53,6 +53,7 @@ class TestPieDivider(unittest.TestCase):
         Q3PartC.pie_divider()
 
         sys.stdout = sys.__stdout__
+
         output = capout.getvalue()
 
         expected_output = "Invalid\n2\n1\n"
