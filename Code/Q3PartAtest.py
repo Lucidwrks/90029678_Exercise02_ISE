@@ -2,55 +2,55 @@ import unittest
 from Q3PartA import move_direction
 
 class TestMoveDirection(unittest.TestCase):
-    def test_valid_direction_north(self):
+    def test_north(self):
         x, y = move_direction('N', 0, 0)
-        assert (x, y) == (-1, 0), "Failed to move north"
+        assert (x, y) == (-1, 0), "north"
 
-    def test_valid_direction_south(self):
+    def test_south(self):
         x, y = move_direction('S', 0, 0)
-        assert (x, y) == (1, 0), "Failed to move south"
+        assert (x, y) == (1, 0), "south"
 
-    def test_valid_direction_east(self):
+    def test_east(self):
         x, y = move_direction('E', 0, 0)
-        assert (x, y) == (0, 1), "Failed to move east"
+        assert (x, y) == (0, 1), "east"
 
-    def test_valid_direction_west(self):
+    def test_west(self):
         x, y = move_direction('W', 0, 0)
-        assert (x, y) == (0, -1), "Failed to move west"
+        assert (x, y) == (0, -1), "west"
 
-    def test_valid_direction_northeast(self):
+    def test_northeast(self):
         x, y = move_direction('NE', 0, 0)
-        assert (x, y) == (-1, -1), "Failed to move northeast"
+        assert (x, y) == (-1, -1), "northeast"
 
-    def test_valid_direction_northwest(self):
+    def test_northwest(self):
         x, y = move_direction('NW', 0, 0)
-        assert (x, y) == (-1, -1), "Failed to move northwest"
+        assert (x, y) == (-1, -1), "northwest"
 
-    def test_valid_direction_southeast(self):
+    def test_southeast(self):
         x, y = move_direction('SE', 0, 0)
-        assert (x, y) == (1, 1), "Failed to move southeast"
+        assert (x, y) == (1, 1), "southeast"
 
-    def test_valid_direction_southwest(self):
+    def test_southwest(self):
         x, y = move_direction('SW', 0, 0)
-        assert (x, y) == (-1, 1), "Failed to move southwest"
+        assert (x, y) == (-1, 1), "southwest"
 
     def test_invalid_direction(self):
         with self.assertRaises(ValueError):
             move_direction('X', 0, 0)
 
-    def test_invalid_x_coordinate(self):
+    def test_invalid_xcoord(self):
         with self.assertRaises(ValueError):
             move_direction('N', -1, 0)
 
-    def test_invalid_y_coordinate(self):
+    def test_invalid_ycoord(self):
         with self.assertRaises(ValueError):
             move_direction('N', 0, -1)
 
-    def test_invalid_x_upper_bound(self):
+    def test_invalid_xlimit(self):
         with self.assertRaises(ValueError):
             move_direction('N', 8, 0)
 
-    def test_invalid_y_upper_bound(self):
+    def test_invalid_ylimit(self):
         with self.assertRaises(ValueError):
             move_direction('N', 0, 8)
 
