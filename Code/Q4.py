@@ -1,79 +1,71 @@
-# This is a dodgy calculator
+# This is a dodgy calculator (Not anymore)
 
-# function to multiply or divide
-def times_or_divide(operation):
-    global num_one, num_two
-    # choose operation
+######## 01. no more global variable. decrease coupling ########
+
+######## 02. made all operations seperate functions to increase cohesion and decrease coupling ########
+# Function to multiply
+def times(operation, num_one, num_two):
     if operation == "*":
         return num_one * num_two
-    elif operation == "/":
+    else:
+        raise ValueError("Invalid operation")
+    
+# Function divide
+def divide(operation, num_one, num_two):
+    if operation == "/":
         return num_one / num_two
     else:
         raise ValueError("Invalid operation")
     
-# function to add or subtract
-def add_or_subtract(operation):
-    global num_one, num_two
-    # choose operation
+# Function to add
+def add(operation, num_one, num_two):
     if operation == "+":
         return num_one + num_two
-    elif operation == "-":
+    else:
+        raise ValueError("Invalid operation")
+
+# Function to subtract
+def subtract(operation, num_one, num_two):
+    if operation == "-":
         return num_one - num_two
     else:
         raise ValueError("Invalid operation")
-    
+
 def get_number():
-    # This loops until the user enters a valid number
     while True:
         try:
-            global number
-            number = float(input())
-            break
+            number = float(input("Enter a number: "))
+            return number
         except ValueError:
             print("Invalid input")
 
 
-if __name__ == "__main__":
-    # get the first number
-    get_number()
-    num_one = number
+######## 03. fix rededundancy issue by creating independant calc function  ########
+def calculate():
+    num_one = get_number()
+    operation = input("Enter an operation (+, -, *, /): ")
+    num_two = get_number()
 
-    # get the operation
-    operation = input()
-
-    # get the second number
-    get_number()
-    num_two = number
-
-    # choose operation
-    if operation == "*" or operation == "/":
-        print(times_or_divide(operation))
-    elif operation == "+" or operation == "-":
-        print(add_or_subtract(operation))
+    if operation in ["*"]:
+        result = times(operation, num_one, num_two)
+    elif operation in ["/"]:
+        result = divide(operation, num_one, num_two)
+    elif operation in ["+"]:
+        result = add(operation, num_one, num_two)
+    elif operation in ["-"]:
+        result = subtract(operation, num_one, num_two)
     else:
         print("Invalid input")
+        return
 
-    # ask if the user wants to calculate again
-    # I tried but I couldn't get this to work more than once :(
-    print("Do you want to calculate again? (y/n)")
-    if input() == "y":
-        # get the first number
-        get_number()
-        num_one = number
+    print("Result:", result)
 
-        # get the operation
-        operation = input()
+######## 03. fix rededundancy issue by only making code for asking user to continue occur once in a loop once answer is calculated. ########
+    return input("Do you want to calculate again? (y/n)")
 
-        # get the second number
-        get_number()
-        num_two = number
+if __name__ == "__main__":
+    repeat = "y"
+    while repeat.lower() == "y":
+        repeat = calculate()
 
-        # choose operation
-        if operation == "*" or operation == "/":
-            print(times_or_divide(operation))
-        elif operation == "+" or operation == "-":
-            print(add_or_subtract(operation))
-        else:
-            print("Invalid input")
-    else:
-        print("Goodbye")
+    print("Goodbye")
