@@ -1,5 +1,3 @@
-from Q3PartC import pie_divider
-import unittest
 
 class Q3PartCtest(unittest.TestCase):
     def pie_divider_test(self):
