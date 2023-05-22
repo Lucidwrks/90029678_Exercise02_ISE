@@ -1,7 +1,7 @@
 import unittest
 from Q3PartA import move_direction
-
-class TestMoveDirection(unittest.TestCase):
+#### test
+class TestMove_Direction(unittest.TestCase):
     def test_north(self):
         x, y = move_direction('N', 0, 0)
         assert (x, y) == (-1, 0), "north"
@@ -53,6 +53,7 @@ class TestMoveDirection(unittest.TestCase):
     def test_invalid_ylimit(self):
         with self.assertRaises(ValueError):
             move_direction('N', 0, 8)
+
 
 if __name__ == '__main__':
     unittest.main()
