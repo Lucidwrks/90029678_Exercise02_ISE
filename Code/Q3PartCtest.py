@@ -66,7 +66,7 @@ import Q3PartC
 import unittest
 
 class TestPieDivider(unittest.TestCase):
-    def test_pie_divider(self):
+    def test_no_while_loop_not_perfect(self):
         capout = io.StringIO()
         sys.stdout = capout
 
@@ -76,7 +76,7 @@ class TestPieDivider(unittest.TestCase):
         sys.stdout = sys.__stdout__
         output = capout.getvalue()
 
-        expected_output = "2\n1\nPerfect\n" 
+        expected_output = "2\n1\n" 
         self.assertEqual(output, expected_output)
 
 
@@ -123,6 +123,3 @@ class TestPieDivider(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-    unittest.main()
-
